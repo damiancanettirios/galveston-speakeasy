@@ -1,17 +1,40 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PictureLibrary from "../components/picture-library"
+import PictureGrid from "../components/picture-grid"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  const pictures = data.allContentfulPictureLibrary.edges
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <PictureLibrary pictures={pictures} />
+      <PictureGrid pictures={pictures} />
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+export const HomeQuery = graphql`
+  {
+    allContentfulPictureLibrary(sort: { fields: [id], order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          picture {
+            description
+            fluid(quality: 99) {
+              src
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+        }
+      }
+    }
+  }
+`

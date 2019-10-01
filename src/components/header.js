@@ -1,35 +1,63 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+import { Button } from "react-rainbow-components"
+
+import PageLink from "../components/page-link"
+import PageList from "../components/page-list"
+
+const Header = ({ siteData }) => {
+  const [active, setActive] = useState(false)
+
+  return (
+    <header
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        background: `transparent`,
+        marginBottom: `1.45rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
+      <div
+        style={{
+          margin: `0 auto`,
+          width: `95%`,
+          padding: `0.5rem 1rem`,
+        }}
+      >
+        <h3 style={{ margin: 0 }}>
+          <Link
+            to="/"
+            style={{
+              textDecoration: `none`,
+              color: `white`,
+            }}
+          >
+            {siteData.headline}
+          </Link>
+        </h3>
+        <p style={{ marginBottom: 10, marginTop: 0 }}>{siteData.address}</p>
+        <Button
+          onClick={() => setActive(!active)}
+          variant="brand"
+          style={{ borderRadius: `5px` }}
         >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+          Menu {!active ? "+" : "x"}
+        </Button>
+        {!active ? null : (
+          <PageList>
+            <PageLink page={`/`}>Home</PageLink>
+            <PageLink page={`/history`}>History</PageLink>
+            <PageLink page={`/house`}>House</PageLink>
+            <PageLink page={`/testimonials`}>Testimonials</PageLink>
+            <PageLink page={`/media`}>Media</PageLink>
+            <PageLink page={`/local-amenities`}>Local Amenities</PageLink>
+            <PageLink page={`/contact`}>Contact</PageLink>
+          </PageList>
+        )}
+      </div>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

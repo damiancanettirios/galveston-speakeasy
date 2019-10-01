@@ -1,8 +1,32 @@
+let contentfulConfig
+
+try {
+  // Load the Contentful config from the .contentful.json
+  contentfulConfig = require("./.contentful")
+} catch (_) {}
+
+// Overwrite the Contentful config with environment variables if they exist
+contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  accessToken:
+    process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+}
+
+const { spaceId, accessToken } = contentfulConfig
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    "Contentful spaceId and the delivery token need to be provided."
+  )
+}
+
 module.exports = {
   siteMetadata: {
     title: `Galveston Speakeasy | Historical Home | Galveston Texas`,
     description: `Stay at this historical home during your next visit to Galveston Texas`,
     author: `@dcrrrrrrrrr`,
+    headline: `Galveston Speakeasy`,
+    address: `1823 Avenue L, Galveston, TX 77550`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,6 +36,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: spaceId,
+        accessToken: accessToken,
       },
     },
     `gatsby-transformer-sharp`,
