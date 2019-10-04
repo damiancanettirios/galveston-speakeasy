@@ -5,14 +5,17 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PictureLibrary from "../components/picture-library"
 import PictureGrid from "../components/picture-grid"
+import HouseStats from "../components/house-stats"
 
 const IndexPage = ({ data }) => {
   const pictures = data.allContentfulPictureLibrary.edges
+  const stats = data.allContentfulHouse.edges
   return (
     <Layout>
       <SEO title="Home" />
       <PictureLibrary pictures={pictures} />
       <PictureGrid pictures={pictures} />
+      <HouseStats stats={stats} />
     </Layout>
   )
 }
@@ -33,6 +36,15 @@ export const HomeQuery = graphql`
               ...GatsbyContentfulFluid_withWebp
             }
           }
+        }
+      }
+    }
+    allContentfulHouse(sort: { fields: [id], order: ASC }) {
+      edges {
+        node {
+          id
+          title
+          statistic
         }
       }
     }

@@ -28,10 +28,6 @@ const Layout = ({ children }) => {
             margin: 0;
           }
 
-          * + * {
-            margin-top: 1rem;
-          }
-
           html,
           body {
             background: #060f29;
@@ -53,18 +49,10 @@ const Layout = ({ children }) => {
           h6 {
             color: white;
             line-height: 1.1;
-
-            + * {
-              margin-top: 0.5rem;
-            }
           }
 
           strong {
             color: #222;
-          }
-
-          li {
-            margin-top: 0.25rem;
           }
         `}
       />

@@ -12,8 +12,8 @@ const Grid = styled("div")`
 `
 
 const ImageItem = styled(Img)`
-  height: 75px;
-  width: 75px;
+  width: 110px;
+  height: 110px;
   margin: 5px;
 `
 
