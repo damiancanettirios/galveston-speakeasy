@@ -5,7 +5,7 @@ import styled from "@emotion/styled"
 const LinkBox = styled(Link)`
   margin-top: 10px;
   text-decoration: none;
-  color: lightgrey;
+  color: black;
   &:hover {
     color: #009688;
   }

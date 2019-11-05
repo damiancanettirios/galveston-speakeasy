@@ -5,7 +5,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Global, css } from "@emotion/core"
 
 import Header from "./header"
+import Footer from "./footer"
 import "./layout.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -15,6 +17,9 @@ const Layout = ({ children }) => {
           headline
           address
         }
+      }
+      file(name: { eq: "bg" }) {
+        publicURL
       }
     }
   `)
@@ -30,10 +35,9 @@ const Layout = ({ children }) => {
 
           html,
           body {
-            background: #060f29;
-            color: #ecf0f1;
             font-size: 18px;
             line-height: 1.4;
+            background: repeat url(${data.file.publicURL});
 
             /* remove margin for main div */
             > div {
@@ -41,37 +45,30 @@ const Layout = ({ children }) => {
             }
           }
 
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            color: white;
-            line-height: 1.1;
-          }
-
-          strong {
-            color: #222;
+          a {
+            color: black;
+            border-top: 1px solid silver;
+            &:hover {
+              color: #fd5c63;
+              text-decoration: underline;
+            }
           }
         `}
       />
       <Header siteData={data.site.siteMetadata} />
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
+        css={css`
+          margin: 0 auto;
+          padding-top: 0;
+
+          @media (min-width: 701px) {
+            width: 95%;
+          }
+        `}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
       </div>
+      <Footer />
     </>
   )
 }

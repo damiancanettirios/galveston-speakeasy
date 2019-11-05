@@ -2,10 +2,11 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 
-import { Button } from "react-rainbow-components"
+import Navbar from "react-bootstrap/Navbar"
+import Nav from "react-bootstrap/Nav"
 
-import PageLink from "../components/page-link"
-import PageList from "../components/page-list"
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Header = ({ siteData }) => {
   const [active, setActive] = useState(false)
@@ -14,47 +15,76 @@ const Header = ({ siteData }) => {
     <header
       style={{
         background: `transparent`,
-        marginBottom: `1.45rem`,
+        margin: `0 auto`,
+        width: `95%`,
       }}
     >
-      <div
-        style={{
-          margin: `0 auto`,
-          width: `95%`,
-          padding: `0.5rem 1rem`,
-        }}
-      >
-        <h3 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              textDecoration: `none`,
-              color: `white`,
-            }}
-          >
-            {siteData.headline}
-          </Link>
-        </h3>
-        <p style={{ marginBottom: 10, marginTop: 0 }}>{siteData.address}</p>
-        <Button
-          onClick={() => setActive(!active)}
-          variant="brand"
-          style={{ borderRadius: `5px` }}
+      <Navbar style={{ padding: `10px 0px 0px 0px` }}>
+        <div
+          style={{
+            display: `flex`,
+            flexDirection: `row`,
+            justifyContent: `space-between`,
+            width: `100%`,
+          }}
         >
-          Menu {!active ? "+" : "x"}
-        </Button>
-        {!active ? null : (
-          <PageList>
-            <PageLink page={`/`}>Home</PageLink>
-            <PageLink page={`/history`}>History</PageLink>
-            <PageLink page={`/house`}>House</PageLink>
-            <PageLink page={`/testimonials`}>Testimonials</PageLink>
-            <PageLink page={`/media`}>Media</PageLink>
-            <PageLink page={`/local-amenities`}>Local Amenities</PageLink>
-            <PageLink page={`/contact`}>Contact</PageLink>
-          </PageList>
-        )}
-      </div>
+          <div>
+            <h5 style={{ margin: 0 }}>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: `none`,
+                  color: `black`,
+                  border: `0px`,
+                }}
+              >
+                {siteData.headline}
+              </Link>
+            </h5>
+            <p style={{ marginBottom: 5 }}>{siteData.address}</p>
+          </div>
+          <div style={{ padding: 4 }}>
+            {!active ? (
+              <FontAwesomeIcon
+                icon={faBars}
+                onClick={() => setActive(!active)}
+                style={{ color: `black` }}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faTimes}
+                onClick={() => setActive(!active)}
+                style={{ color: `black` }}
+              />
+            )}
+          </div>
+        </div>
+      </Navbar>
+      {!active ? null : (
+        <Nav defaultActiveKey="/" className="flex-column">
+          <Nav.Link href={`/`} style={{ paddingLeft: 0 }}>
+            Home
+          </Nav.Link>
+          <Nav.Link href={`/history`} style={{ paddingLeft: 0 }}>
+            History
+          </Nav.Link>
+          <Nav.Link href={`/house`} style={{ paddingLeft: 0 }}>
+            House
+          </Nav.Link>
+          <Nav.Link href={`/testimonials`} style={{ paddingLeft: 0 }}>
+            Testimonials
+          </Nav.Link>
+          <Nav.Link href={`/media`} style={{ paddingLeft: 0 }}>
+            Media
+          </Nav.Link>
+          <Nav.Link href={`/local-amenities`} style={{ paddingLeft: 0 }}>
+            Local Amenities
+          </Nav.Link>
+          <Nav.Link href={`/contact`} style={{ paddingLeft: 0 }}>
+            Contact
+          </Nav.Link>
+        </Nav>
+      )}
     </header>
   )
 }

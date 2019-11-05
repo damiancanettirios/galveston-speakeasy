@@ -1,24 +1,16 @@
 import React from "react"
-import { CarouselImage } from "react-rainbow-components"
-import { CarouselCard } from "react-rainbow-components"
+import Carousel from "react-bootstrap/Carousel"
+import Img from "gatsby-image"
 
 const PictureLibrary = ({ pictures }) => {
-  const carouselContainerStyles = {
-    width: `90vw`,
-  }
-
   return (
-    <div className="rainbow-p-bottom_small">
-      <CarouselCard className="rainbow-m_auto" style={carouselContainerStyles}>
-        {pictures.map(({ node }) => (
-          <CarouselImage
-            key={node.id}
-            alternativeText={node.picture.description}
-            src={node.picture.fluid.src}
-          ></CarouselImage>
-        ))}
-      </CarouselCard>
-    </div>
+    <Carousel style={{ margin: `0 auto` }}>
+      {pictures.map(({ node }) => (
+        <Carousel.Item key={node.id} style={{ objectFit: `contain` }}>
+          <Img fluid={node.picture.fluid} alt={node.picture.description} />
+        </Carousel.Item>
+      ))}
+    </Carousel>
   )
 }
 

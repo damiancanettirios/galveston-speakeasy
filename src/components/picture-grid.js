@@ -9,6 +9,7 @@ const Grid = styled("div")`
   justify-content: center;
   flex-wrap: wrap;
   width: 90vw;
+  margin: 0 auto;
 `
 
 const ImageItem = styled(Img)`

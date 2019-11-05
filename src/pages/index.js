@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PictureLibrary from "../components/picture-library"
-import PictureGrid from "../components/picture-grid"
 import HouseStats from "../components/house-stats"
 
 const IndexPage = ({ data }) => {
@@ -14,8 +13,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <PictureLibrary pictures={pictures} />
-      <PictureGrid pictures={pictures} />
-      <HouseStats stats={stats} />
+      <HouseStats stats={stats} pictures={pictures} />
     </Layout>
   )
 }
@@ -24,7 +22,10 @@ export default IndexPage
 
 export const HomeQuery = graphql`
   {
-    allContentfulPictureLibrary(sort: { fields: [id], order: DESC }) {
+    allContentfulPictureLibrary(
+      filter: { heroImage: { eq: true } }
+      sort: { fields: sequence, order: ASC }
+    ) {
       edges {
         node {
           id
@@ -33,13 +34,13 @@ export const HomeQuery = graphql`
             description
             fluid(quality: 99) {
               src
-              ...GatsbyContentfulFluid_withWebp
+              ...GatsbyContentfulFluid_noBase64
             }
           }
         }
       }
     }
-    allContentfulHouse(sort: { fields: [id], order: ASC }) {
+    allContentfulHouse(sort: { fields: id, order: ASC }) {
       edges {
         node {
           id

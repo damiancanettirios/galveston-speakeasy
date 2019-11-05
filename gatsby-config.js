@@ -22,11 +22,11 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: `Galveston Speakeasy | Historical Home | Galveston Texas`,
+    title: `Galveston Speakeasy Cottage | Historical Home | Galveston Texas`,
     description: `Stay at this historical home during your next visit to Galveston Texas`,
     author: `@dcrrrrrrrrr`,
-    headline: `Galveston Speakeasy`,
-    address: `1823 Avenue L, Galveston, TX 77550`,
+    headline: `Galveston Speakeasy Cottage`,
+    address: `1212 19th St, Galveston, TX`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -45,8 +45,8 @@ module.exports = {
         accessToken: accessToken,
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -56,7 +56,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/bg.jpg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
