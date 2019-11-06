@@ -1,13 +1,13 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 
 import Jumbotron from "react-bootstrap/Jumbotron"
 import Container from "react-bootstrap/Container"
-import Card from "react-bootstrap/Card"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import TestimonialDisplay from "../components/testimonial-display"
 
 const TestimonialsPage = ({ data }) => {
   const testimonials = data.testimonials.nodes
@@ -32,20 +32,15 @@ const TestimonialsPage = ({ data }) => {
           </Container>
         </Jumbotron>
       </BackgroundImage>
-      {testimonials.map(testimonial => (
-        <Card key={testimonial.id} style={{ marginTop: 20 }}>
-          <Card.Header>{testimonial.stay}</Card.Header>
-          <Card.Body>
-            <blockquote className="blockquote mb-0">
-              <p>{testimonial.content.content}</p>
-              <footer className="blockquote-footer">{testimonial.name}</footer>
-            </blockquote>
-          </Card.Body>
-        </Card>
-      ))}
-      <Link to="/" style={{ border: 0 }}>
-        Go back to the homepage
-      </Link>
+      <Container style={{ paddingBottom: 40, marginTop: 30, maxWidth: 960 }}>
+        {testimonials.map(testimonial => (
+          <TestimonialDisplay
+            key={testimonial.id}
+            testimonial={testimonial}
+            body={testimonial.content.content}
+          />
+        ))}
+      </Container>
     </Layout>
   )
 }
@@ -54,7 +49,10 @@ export default TestimonialsPage
 
 export const TestimonialQuery = graphql`
   {
-    testimonials: allContentfulTestimonials(limit: 5) {
+    testimonials: allContentfulTestimonials(
+      limit: 5
+      sort: { fields: createdAt, order: DESC }
+    ) {
       nodes {
         id
         name
@@ -62,6 +60,7 @@ export const TestimonialQuery = graphql`
         content {
           content
         }
+        stars
       }
     }
     hero: contentfulAsset(title: { eq: "LivingRoomClear" }) {

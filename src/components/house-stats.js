@@ -53,6 +53,7 @@ const HouseStats = ({ stats, pictures }) => (
         Airbnb
       </a>
     </Headline>
+    <h5>Click below to view more photos of the Galveston Speakeasy Cottage</h5>
     <div style={{ paddingBottom: `20px` }}>
       <PictureGrid pictures={pictures} />
     </div>

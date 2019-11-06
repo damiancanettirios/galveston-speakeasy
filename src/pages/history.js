@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import Jumbotron from "react-bootstrap/Jumbotron"
 import Container from "react-bootstrap/Container"
@@ -39,7 +39,7 @@ const HistoryPage = ({ data }) => {
           </Container>
         </Jumbotron>
       </BackgroundImage>
-      <div style={{ maxWidth: `960px`, margin: `0 auto` }}>
+      <div style={{ maxWidth: `960px`, margin: `0 auto`, marginBottom: 70 }}>
         <h3
           style={{
             fontWeight: `normal`,
@@ -103,9 +103,6 @@ const HistoryPage = ({ data }) => {
           Speakeasy. However, you don’t need a secret password to enter.
         </h3>
       </div>
-      <Link to="/" style={{ border: 0 }}>
-        Go back to the homepage
-      </Link>
     </Layout>
   )
 }

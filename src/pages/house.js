@@ -37,7 +37,7 @@ const HousePage = ({ data }) => {
           </Container>
         </Jumbotron>
       </BackgroundImage>
-      <div style={{ maxWidth: `960px`, margin: `0 auto` }}>
+      <div style={{ maxWidth: `960px`, margin: `0 auto`, marginBottom: 70 }}>
         <h3
           style={{
             fontWeight: `normal`,

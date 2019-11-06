@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import styled from "@emotion/styled"
 import BackgroundImage from "gatsby-background-image"
 
@@ -16,6 +16,8 @@ const AmenitiesDiv = styled("div")`
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
+  margin-bottom: 40px;
+  margin-top: 40px;
 `
 
 const LocalAmenitiesPage = ({ data }) => {
@@ -47,24 +49,23 @@ const LocalAmenitiesPage = ({ data }) => {
         next visit
       </h3>
       <hr style={{ margin: `0 auto`, marginTop: 50 }} />
-      <h2 style={{ margin: `20px 0px 20px 0px`, textAlign: `center` }}>Food</h2>
+      <h1 style={{ margin: `20px 0px 20px 0px`, textAlign: `center` }}>Food</h1>
       <hr style={{ margin: `0 auto` }} />
       <AmenitiesDiv>
         {food.map(({ node }) => (
           <Places key={node.id} place={node} />
         ))}
       </AmenitiesDiv>
-      <hr style={{ margin: `0 auto`, marginTop: 50 }} />
-      <h2 style={{ margin: `20px 0px 20px 0px`, textAlign: `center` }}>
+      <hr style={{ margin: `0 auto` }} />
+      <h1 style={{ margin: `20px 0px 20px 0px`, textAlign: `center` }}>
         Entertainment
-      </h2>
+      </h1>
       <hr style={{ margin: `0 auto` }} />
       <AmenitiesDiv>
         {entertainment.map(({ node }) => (
           <Places key={node.id} place={node} />
         ))}
       </AmenitiesDiv>
-      <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }

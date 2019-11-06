@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const Places = ({ place }) => {
   const [active, setActive] = useState(false)
   return (
-    <Card style={{ width: `19rem`, margin: 10 }}>
+    <Card style={{ width: `19rem`, margin: `20px 10px 20px 10px` }}>
       <Card.Img
         variant="top"
         src={place.picture.fluid.src}
