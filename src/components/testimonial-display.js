@@ -6,10 +6,19 @@ import Stars from "../components/stars"
 const TestimonialDisplay = ({ testimonial, body }) => (
   <Card style={{ margin: `0 auto`, marginBottom: 20 }}>
     <Card.Header>
-      <Stars count={testimonial.stars} />
+      <a href="https://www.airbnb.com/rooms/39031320" style={{ border: 0 }}>
+        <Stars count={testimonial.stars} />
+      </a>
       <span style={{ marginLeft: 10 }} />
       {testimonial.stay + " from "}
-      <span style={{ color: `#fd5c63` }}>Airbnb</span>
+      <span>
+        <a
+          href="https://www.airbnb.com/rooms/39031320"
+          style={{ color: `#fd5c63`, border: 0 }}
+        >
+          Airbnb
+        </a>
+      </span>
     </Card.Header>
     <Card.Body>
       <blockquote className="blockquote mb-0">

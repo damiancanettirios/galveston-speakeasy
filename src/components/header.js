@@ -4,8 +4,9 @@ import React, { useState } from "react"
 
 import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
+import CloseButton from "react-bootstrap/CloseButton"
 
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Header = ({ siteData }) => {
@@ -51,11 +52,7 @@ const Header = ({ siteData }) => {
                 style={{ color: `black` }}
               />
             ) : (
-              <FontAwesomeIcon
-                icon={faTimes}
-                onClick={() => setActive(!active)}
-                style={{ color: `black` }}
-              />
+              <CloseButton onClick={() => setActive(!active)} />
             )}
           </div>
         </div>

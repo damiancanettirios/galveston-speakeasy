@@ -13,29 +13,17 @@ import Galveston from "../components/galveston"
 import TestimonialDisplay from "../components/testimonial-display"
 
 const IndexPage = ({ data }) => {
-  const pictures = data.allContentfulPictureLibrary.edges
-  const stats = data.allContentfulHouse.edges
+  const pictures = data.heros.edges
+  const stats = data.stats.edges
   const testimonials = data.testimonials.nodes
+  const gallery = data.gallery.images
   return (
     <Layout>
       <SEO title="Home" />
       <PictureLibrary pictures={pictures} />
-      <HouseStats stats={stats} pictures={pictures} />
-      <Container style={{ marginBottom: 30, padding: 0 }}>
-        <Galveston>
-          <Container style={{ padding: 50 }}>
-            <h1 style={{ color: `white`, marginBottom: 30 }}>
-              See some of the places that make Galveston a fun destination for
-              your next trip
-            </h1>
-            <Button variant="info" size="lg">
-              See the Local Amenities
-            </Button>
-          </Container>
-        </Galveston>
-      </Container>
+      <HouseStats stats={stats} gallery={gallery} />
       {/* Testimonials */}
-      <Container style={{ marginBottom: 60, maxWidth: 960 }}>
+      <Container style={{ marginBottom: 60, marginTop: 60, maxWidth: 960 }}>
         <h1 style={{ marginBottom: 30, textAlign: `center` }}>
           See what our guests have said
         </h1>
@@ -50,6 +38,20 @@ const IndexPage = ({ data }) => {
           ))}
         </Carousel>
       </Container>
+      {/* Local Amenities */}
+      <Container style={{ marginBottom: 60, padding: 0 }}>
+        <Galveston>
+          <Container style={{ padding: 50 }}>
+            <h1 style={{ color: `white`, marginBottom: 30 }}>
+              See some of the places that make Galveston a fun destination for
+              your next trip
+            </h1>
+            <Button variant="info" size="lg">
+              See the Local Amenities
+            </Button>
+          </Container>
+        </Galveston>
+      </Container>
     </Layout>
   )
 }
@@ -58,7 +60,7 @@ export default IndexPage
 
 export const HomeQuery = graphql`
   {
-    allContentfulPictureLibrary(
+    heros: allContentfulPictureLibrary(
       filter: { heroImage: { eq: true } }
       sort: { fields: sequence, order: ASC }
     ) {
@@ -76,7 +78,7 @@ export const HomeQuery = graphql`
         }
       }
     }
-    allContentfulHouse(sort: { fields: id, order: ASC }) {
+    stats: allContentfulHouse(sort: { fields: id, order: ASC }) {
       edges {
         node {
           id
@@ -95,6 +97,16 @@ export const HomeQuery = graphql`
         stay(formatString: "MMMM YYYY")
         short
         stars
+      }
+    }
+    gallery: contentfulCasousel(name: { eq: "Main Casousel" }) {
+      name
+      images {
+        id
+        description
+        fluid(maxHeight: 200, quality: 99) {
+          ...GatsbyContentfulFluid_noBase64
+        }
       }
     }
   }
