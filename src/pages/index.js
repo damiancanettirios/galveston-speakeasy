@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Button from "react-bootstrap/Button"
 import Carousel from "react-bootstrap/Carousel"
@@ -7,20 +8,25 @@ import Container from "react-bootstrap/Container"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PictureLibrary from "../components/picture-library"
 import HouseStats from "../components/house-stats"
 import Galveston from "../components/galveston"
 import TestimonialDisplay from "../components/testimonial-display"
 
 const IndexPage = ({ data }) => {
-  const pictures = data.heros.edges
+  const pictures = data.heros.images
   const stats = data.stats.edges
   const testimonials = data.testimonials.nodes
   const gallery = data.gallery.images
   return (
     <Layout>
       <SEO title="Home" />
-      <PictureLibrary pictures={pictures} />
+      <Carousel style={{ margin: `0 auto` }}>
+        {pictures.map(image => (
+          <Carousel.Item key={image.id} style={{ objectFit: `contain` }}>
+            <Img fluid={image.fluid} alt={image.description} />
+          </Carousel.Item>
+        ))}
+      </Carousel>
       <HouseStats stats={stats} gallery={gallery} />
       {/* Testimonials */}
       <Container style={{ marginBottom: 60, marginTop: 60, maxWidth: 960 }}>
@@ -60,21 +66,14 @@ export default IndexPage
 
 export const HomeQuery = graphql`
   {
-    heros: allContentfulPictureLibrary(
-      filter: { heroImage: { eq: true } }
-      sort: { fields: sequence, order: ASC }
-    ) {
-      edges {
-        node {
-          id
-          title
-          picture {
-            description
-            fluid(quality: 99) {
-              src
-              ...GatsbyContentfulFluid_noBase64
-            }
-          }
+    heros: contentfulCasousel(name: { eq: "Hero" }) {
+      name
+      images {
+        id
+        description
+        fluid(quality: 99) {
+          src
+          ...GatsbyContentfulFluid_noBase64
         }
       }
     }

@@ -1,7 +1,31 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
 
-// You can delete this file if you're not using it
+  const result = await graphql(`
+    {
+      pages: allContentfulPages {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  const pages = result.data.pages.nodes
+  const pagesTemplate = require.resolve(`./src/templates/content-page.js`)
+  pages.forEach(node => {
+    createPage({
+      path: `/${node.slug}/`,
+      component: pagesTemplate,
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
+}
