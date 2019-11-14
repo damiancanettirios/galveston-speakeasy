@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Carousel style={{ margin: `0 auto` }}>
+      <Carousel style={{ margin: `0 auto`, width: `95%` }}>
         {pictures.map(image => (
           <Carousel.Item key={image.id} style={{ objectFit: `contain` }}>
             <Img fluid={image.fluid} alt={image.description} />
@@ -103,8 +103,11 @@ export const HomeQuery = graphql`
       images {
         id
         description
-        fluid(maxHeight: 200, quality: 99) {
+        fluid(quality: 99) {
           ...GatsbyContentfulFluid_noBase64
+        }
+        fixed(height: 500) {
+          ...GatsbyContentfulFixed_noBase64
         }
       }
     }

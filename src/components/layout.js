@@ -38,6 +38,7 @@ const Layout = ({ children }) => {
             font-size: 18px;
             line-height: 1.4;
             background: repeat url(${data.file.publicURL});
+            width: 100vw;
 
             /* remove margin for main div */
             > div {
@@ -60,6 +61,7 @@ const Layout = ({ children }) => {
         css={css`
           margin: 0 auto;
           padding-top: 0;
+          width: 95vw;
 
           @media (min-width: 701px) {
             width: 95%;

@@ -35,22 +35,46 @@ const FooterSiteLink = styled(Link)`
 `
 
 const FooterLi = styled("li")`
+  margin: 0 auto;
+`
+
+const ListStyle = styled("ul")`
+  list-style-type: none;
+  text-align: center;
   margin: 0;
+
+  @media (min-width: 701px) {
+    text-align: left;
+  }
+`
+
+const IconLinks = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  @media (min-width: 701px) {
+    justify-content: flex-start;
+  }
 `
 
 const Footer = () => (
   <FooterDiv>
-    <Col md={5} sm={6} xs={12}>
-      <ul style={{ listStyleType: `none` }}>
+    <Col md={5} sm={6} xs={12} style={{ margin: `0 auto` }}>
+      <ListStyle>
         <FooterLi>
           <FooterSiteLink to="/">
             <h4>Galveston Speakeasy Cottage</h4>
           </FooterSiteLink>
         </FooterLi>
         <FooterLi>
-          <h4 style={{ color: `white`, fontWeight: `normal` }}>
-            1212 19th Street, Galveston, Texas
-          </h4>
+          <FooterLink href="https://goo.gl/maps/SgyYLnEM7dQ6ghM78">
+            <h4 style={{ fontWeight: `normal` }}>
+              1212 19th Street
+              <br />
+              Galveston, Texas
+            </h4>
+          </FooterLink>
         </FooterLi>
         <FooterLi style={{ paddingTop: 20 }}>
           <FooterSiteLink to="/contact">
@@ -58,20 +82,20 @@ const Footer = () => (
           </FooterSiteLink>
         </FooterLi>
         <FooterLi>
-          <div style={{ display: `flex` }}>
+          <IconLinks>
             <FooterLink href="https://www.airbnb.com/rooms/39031320">
               <FontAwesomeIcon icon={faAirbnb} size="lg" />
             </FooterLink>
-            <FooterLink href="mailto:galvestonspeakeasy@gmail.com">
+            <FooterLink href="mailto:info@galvestonspeakeasy.com">
               <FontAwesomeIcon icon={faEnvelope} size="lg" />
             </FooterLink>
-          </div>
+          </IconLinks>
         </FooterLi>
-      </ul>
+      </ListStyle>
     </Col>
     <Col md={2} />
     <Col md={5} sm={6} xs={12}>
-      <ul style={{ listStyleType: `none` }}>
+      <ListStyle>
         <FooterLi>
           <FooterSiteLink to="/history">
             <h4>History</h4>
@@ -87,17 +111,17 @@ const Footer = () => (
             <h4>Testimonials</h4>
           </FooterSiteLink>
         </FooterLi>
-        <FooterLi>
+        {/* <FooterLi>
           <FooterSiteLink to="/media">
             <h4>Media</h4>
           </FooterSiteLink>
-        </FooterLi>
+        </FooterLi> */}
         <FooterLi>
-          <FooterSiteLink to="/amenities">
+          <FooterSiteLink to="/local-amenities">
             <h4>Local Amenities</h4>
           </FooterSiteLink>
         </FooterLi>
-      </ul>
+      </ListStyle>
     </Col>
   </FooterDiv>
 )

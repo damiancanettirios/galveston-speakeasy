@@ -17,7 +17,7 @@ const Header = ({ siteData }) => {
       style={{
         background: `transparent`,
         margin: `0 auto`,
-        width: `95%`,
+        width: `95vw`,
       }}
     >
       <Navbar style={{ padding: `10px 0px 0px 0px` }}>
@@ -42,7 +42,9 @@ const Header = ({ siteData }) => {
                 {siteData.headline}
               </Link>
             </h5>
-            <p style={{ marginBottom: 5 }}>{siteData.address}</p>
+            <a href="https://goo.gl/maps/SgyYLnEM7dQ6ghM78">
+              <p style={{ marginBottom: 5 }}>{siteData.address}</p>
+            </a>
           </div>
           <div style={{ padding: 4 }}>
             {!active ? (
@@ -71,9 +73,9 @@ const Header = ({ siteData }) => {
           <Nav.Link href={`/testimonials`} style={{ paddingLeft: 0 }}>
             Testimonials
           </Nav.Link>
-          <Nav.Link href={`/media`} style={{ paddingLeft: 0 }}>
+          {/* <Nav.Link href={`/media`} style={{ paddingLeft: 0 }}>
             Media
-          </Nav.Link>
+          </Nav.Link> */}
           <Nav.Link href={`/local-amenities`} style={{ paddingLeft: 0 }}>
             Local Amenities
           </Nav.Link>

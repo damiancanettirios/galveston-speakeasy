@@ -54,7 +54,7 @@ export const ContentQuery = graphql`
       slug
       hero {
         fluid {
-          src
+          ...GatsbyContentfulFluid_noBase64
         }
       }
       headline {

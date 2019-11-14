@@ -3,23 +3,30 @@ import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
-import Modal from "react-bootstrap/Modal"
+import Modal from "../components/modal"
+import ImageModal from "../components/image-modal"
+
 import CloseButton from "react-bootstrap/CloseButton"
-import Carousel from "react-bootstrap/Carousel"
 
 const StatSection = styled("div")`
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 95vw;
+  margin: 0 auto;
+
+  @media (min-width: 701px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 `
 
 const StatBox = styled("div")`
   border-top: 1px solid silver;
   border-bottom: 1px solid silver;
   padding-bottom: 20px;
+  margin: 0 auto;
   margin-top: 20px;
   width: 150px;
   display: flex;
@@ -30,6 +37,27 @@ const StatBox = styled("div")`
 const Headline = styled("h3")`
   font-weight: 400;
   margin-top: 20px;
+  padding: 0;
+  text-align: center;
+
+  @media (min-width: 701px) {
+    font-weight: 500;
+  }
+`
+
+const Subtitle = styled("h5")`
+  font-weight: 400;
+  padding: 0;
+  text-align: center;
+  font-style: italic;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @media (min-width: 701px) {
+    font-weight: 500;
+  }
 `
 
 const Stat = styled("h1")`
@@ -54,11 +82,22 @@ const ImageItem = styled(Img)`
   margin: 5px;
 `
 
+const GalleryImage = styled("div")`
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 const HouseStats = ({ stats, gallery }) => {
   const [show, setShow] = useState(false)
+  const [index, setIndex] = useState(0)
 
   const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+
+  function handleShow(selected) {
+    setShow(true)
+    setIndex(selected)
+  }
 
   return (
     <StatSection>
@@ -78,42 +117,28 @@ const HouseStats = ({ stats, gallery }) => {
           Airbnb
         </a>
       </Headline>
-      <h5>
+      <Subtitle>
         Click below to view more photos of the Galveston Speakeasy Cottage
-      </h5>
+      </Subtitle>
       <div style={{ paddingBottom: `20px` }}>
         <GalleryGrid>
-          {gallery.map(image => (
-            <div onClick={handleShow}>
-              <ImageItem
-                key={image.id}
-                fluid={image.fluid}
-                alt={image.description}
-              />
-            </div>
+          {gallery.map((image, index) => (
+            <GalleryImage key={image.id} onClick={() => handleShow(index)}>
+              <ImageItem fluid={image.fluid} alt={image.description} />
+            </GalleryImage>
           ))}
         </GalleryGrid>
-        <Modal show={show} onHide={handleClose} centered size="lg">
-          <Modal.Body>
-            <div
-              style={{
-                textAlign: `right`,
-                width: `100%`,
-                padding: 8,
-                marginBottom: 20,
-              }}
-            >
-              <CloseButton onClick={handleClose} />
+        {show ? (
+          <Modal handleClose={handleClose}>
+            <CloseButton
+              onClick={() => handleClose()}
+              style={{ textAlign: `right`, padding: 10, color: `white` }}
+            />
+            <div style={{ marginTop: 60 }}>
+              <ImageModal gallery={gallery} selected={index} />
             </div>
-            <Carousel>
-              {gallery.map(image => (
-                <Carousel.Item key={image.id} style={{ objectFit: `contain` }}>
-                  <Img fluid={image.fluid} alt={image.description} />
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          </Modal.Body>
-        </Modal>
+          </Modal>
+        ) : null}
       </div>
       {stats.map(({ node }) => (
         <StatBox key={node.id}>
