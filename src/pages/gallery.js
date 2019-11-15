@@ -25,7 +25,7 @@ const GalleryPage = ({ data }) => {
           </h2>
         </Container>
         {!isTabletOrMobileDevice ? (
-          <StackGrid columnWidth={350}>
+          <StackGrid columnWidth={350} duration={0} monitorImagesLoaded={true}>
             {pictures.map(image => (
               <Card key={image.id}>
                 <Card.Img
