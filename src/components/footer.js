@@ -63,7 +63,12 @@ const IconLinks = styled("div")`
 const Footer = () => (
   <>
     <FooterDiv>
-      <Col md={6} sm={6} xs={12} style={{ margin: `0 auto` }}>
+      <Col
+        md={6}
+        sm={6}
+        xs={12}
+        style={{ margin: `0 auto`, paddingBottom: 30 }}
+      >
         <ListStyle>
           <FooterLi>
             <FooterSiteLink to="/">
