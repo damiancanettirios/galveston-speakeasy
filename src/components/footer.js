@@ -114,6 +114,11 @@ const Footer = () => (
             </FooterSiteLink>
           </FooterLi>
           <FooterLi>
+            <FooterSiteLink to="/gallery">
+              <h4>Gallery</h4>
+            </FooterSiteLink>
+          </FooterLi>
+          <FooterLi>
             <FooterSiteLink to="/testimonials">
               <h4>Testimonials</h4>
             </FooterSiteLink>

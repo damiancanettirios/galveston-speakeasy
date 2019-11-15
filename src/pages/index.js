@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
       </Carousel>
       <HouseStats stats={stats} gallery={gallery} />
       {/* Testimonials */}
-      <Container style={{ marginBottom: 60, marginTop: 60, maxWidth: 960 }}>
+      <Container style={{ marginBottom: 30, marginTop: 60, maxWidth: 960 }}>
         <h1 style={{ marginBottom: 30, textAlign: `center` }}>
           See what our guests have said
         </h1>
@@ -44,6 +44,22 @@ const IndexPage = ({ data }) => {
           ))}
         </Carousel>
       </Container>
+      <div
+        style={{
+          display: `flex`,
+          justifyContent: `center`,
+          marginBottom: 60,
+          padding: 20,
+        }}
+      >
+        <Button
+          variant="outline-danger"
+          size="lg"
+          href="https://www.airbnb.com/rooms/39031320"
+        >
+          Book the Galveston Speakeasy Cottage on Airbnb
+        </Button>
+      </div>
       {/* Local Amenities */}
       <Container style={{ marginBottom: 60, padding: 0 }}>
         <Galveston>

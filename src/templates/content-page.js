@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Jumbotron from "react-bootstrap/Jumbotron"
 import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -38,8 +39,24 @@ const ContentPage = ({ data }) => {
           </Container>
         </Jumbotron>
       </BackgroundImage>
-      <div style={{ maxWidth: `960px`, margin: `0 auto`, marginBottom: 70 }}>
+      <div style={{ maxWidth: `960px`, margin: `0 auto`, marginBottom: 40 }}>
         <MDXRenderer>{body.childMdx.body}</MDXRenderer>
+      </div>
+      <div
+        style={{
+          display: `flex`,
+          justifyContent: `center`,
+          marginBottom: 60,
+          padding: 20,
+        }}
+      >
+        <Button
+          variant="outline-danger"
+          size="lg"
+          href="https://www.airbnb.com/rooms/39031320"
+        >
+          Book the Galveston Speakeasy Cottage on Airbnb
+        </Button>
       </div>
     </Layout>
   )
