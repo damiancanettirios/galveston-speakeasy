@@ -49,9 +49,9 @@ const IndexPage = ({ data }) => {
         <Galveston>
           <Container style={{ padding: 50 }}>
             <h1 style={{ color: `white`, marginBottom: 30 }}>
-              See some of the places that make Galveston a fun destination for
-              your next trip
+              Check out these places on your next trip to Galveston island
             </h1>
+
             <Button variant="info" size="lg">
               See the Local Amenities
             </Button>
@@ -103,11 +103,8 @@ export const HomeQuery = graphql`
       images {
         id
         description
-        fluid(quality: 99) {
+        fluid(quality: 100) {
           ...GatsbyContentfulFluid_noBase64
-        }
-        fixed(height: 500) {
-          ...GatsbyContentfulFixed_noBase64
         }
       }
     }

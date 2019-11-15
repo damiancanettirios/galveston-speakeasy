@@ -1,12 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import Img from "gatsby-image"
 
-import Modal from "../components/modal"
-import ImageModal from "../components/image-modal"
-
-import CloseButton from "react-bootstrap/CloseButton"
+import Button from "react-bootstrap/Button"
 
 const StatSection = styled("div")`
   padding-top: 20px;
@@ -34,17 +32,6 @@ const StatBox = styled("div")`
   align-items: center;
 `
 
-const Headline = styled("h3")`
-  font-weight: 400;
-  margin-top: 20px;
-  padding: 0;
-  text-align: center;
-
-  @media (min-width: 701px) {
-    font-weight: 500;
-  }
-`
-
 const Subtitle = styled("h5")`
   font-weight: 400;
   padding: 0;
@@ -54,6 +41,16 @@ const Subtitle = styled("h5")`
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  @media (min-width: 701px) {
+    font-weight: 500;
+  }
+`
+
+const Headline = styled("h3")`
+  font-weight: 400;
+  margin-top: 20px;
+  padding: 0;
+  text-align: center;
 
   @media (min-width: 701px) {
     font-weight: 500;
@@ -82,72 +79,67 @@ const ImageItem = styled(Img)`
   margin: 5px;
 `
 
-const GalleryImage = styled("div")`
+const GalleryImage = styled(Link)`
   &:hover {
     cursor: pointer;
   }
+  text-decoration: none;
+  border: none;
 `
 
-const HouseStats = ({ stats, gallery }) => {
-  const [show, setShow] = useState(false)
-  const [index, setIndex] = useState(0)
-
-  const handleClose = () => setShow(false)
-
-  function handleShow(selected) {
-    setShow(true)
-    setIndex(selected)
-  }
-
-  return (
-    <StatSection>
-      <Headline
-        css={css`
-          border-bottom: 1px solid #dcdde1;
-          padding-bottom: 20px;
-        `}
+const HouseStats = ({ stats, gallery }) => (
+  <StatSection>
+    <Headline
+      css={css`
+        border-bottom: 1px solid #dcdde1;
+        padding-bottom: 20px;
+      `}
+    >
+      The Galveston Speakeasy Cottage is a fully-restored historical home in the
+      heart of Galveston's historical district now availabile for short-term
+      rental on{" "}
+      <a
+        href="https://www.airbnb.com/rooms/39031320"
+        style={{ color: `#fd5c63`, border: 0 }}
       >
-        The Galveston Speakeasy Cottage is a fully-restored historical home in
-        the heart of Galveston's historical district now availabile for
-        short-term rental on{" "}
-        <a
-          href="https://www.airbnb.com/rooms/39031320"
-          style={{ color: `#fd5c63`, border: 0 }}
-        >
-          Airbnb
-        </a>
-      </Headline>
+        Airbnb
+      </a>
+    </Headline>
+    <div>
       <Subtitle>
-        Click below to view more photos of the Galveston Speakeasy Cottage
+        Please see our photo gallery of the Galveston Speakeasy Cottage
       </Subtitle>
       <div style={{ paddingBottom: `20px` }}>
         <GalleryGrid>
-          {gallery.map((image, index) => (
-            <GalleryImage key={image.id} onClick={() => handleShow(index)}>
+          {gallery.map(image => (
+            <GalleryImage key={image.id} to="/gallery">
               <ImageItem fluid={image.fluid} alt={image.description} />
             </GalleryImage>
           ))}
         </GalleryGrid>
-        {show ? (
-          <Modal handleClose={handleClose}>
-            <CloseButton
-              onClick={() => handleClose()}
-              style={{ textAlign: `right`, padding: 10, color: `white` }}
-            />
-            <div style={{ marginTop: 60 }}>
-              <ImageModal gallery={gallery} selected={index} />
-            </div>
-          </Modal>
-        ) : null}
       </div>
-      {stats.map(({ node }) => (
-        <StatBox key={node.id}>
-          <Headline>{node.title}</Headline>
-          <Stat>{node.statistic}</Stat>
-        </StatBox>
-      ))}
-    </StatSection>
-  )
-}
+      <div
+        style={{
+          display: `flex`,
+          justifyContent: `center`,
+          paddingBottom: 40,
+          paddingTop: 30,
+        }}
+      >
+        <Link to="/gallery" style={{ border: `none` }}>
+          <Button variant="outline-primary" size="lg">
+            Click for More Pictures
+          </Button>
+        </Link>
+      </div>
+    </div>
+    {stats.map(({ node }) => (
+      <StatBox key={node.id}>
+        <Headline>{node.title}</Headline>
+        <Stat>{node.statistic}</Stat>
+      </StatBox>
+    ))}
+  </StatSection>
+)
 
 export default HouseStats

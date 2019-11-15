@@ -42,9 +42,11 @@ const ListStyle = styled("ul")`
   list-style-type: none;
   text-align: center;
   margin: 0;
+  padding-left: 0px;
 
   @media (min-width: 701px) {
     text-align: left;
+    padding-left: 40px;
   }
 `
 
@@ -59,71 +61,72 @@ const IconLinks = styled("div")`
 `
 
 const Footer = () => (
-  <FooterDiv>
-    <Col md={5} sm={6} xs={12} style={{ margin: `0 auto` }}>
-      <ListStyle>
-        <FooterLi>
-          <FooterSiteLink to="/">
-            <h4>Galveston Speakeasy Cottage</h4>
-          </FooterSiteLink>
-        </FooterLi>
-        <FooterLi>
-          <FooterLink href="https://goo.gl/maps/SgyYLnEM7dQ6ghM78">
-            <h4 style={{ fontWeight: `normal` }}>
-              1212 19th Street
-              <br />
-              Galveston, Texas
-            </h4>
-          </FooterLink>
-        </FooterLi>
-        <FooterLi style={{ paddingTop: 20 }}>
-          <FooterSiteLink to="/contact">
-            <h4>Contact Us</h4>
-          </FooterSiteLink>
-        </FooterLi>
-        <FooterLi>
-          <IconLinks>
-            <FooterLink href="https://www.airbnb.com/rooms/39031320">
-              <FontAwesomeIcon icon={faAirbnb} size="lg" />
+  <>
+    <FooterDiv>
+      <Col md={6} sm={6} xs={12} style={{ margin: `0 auto` }}>
+        <ListStyle>
+          <FooterLi>
+            <FooterSiteLink to="/">
+              <h4>Galveston Speakeasy Cottage</h4>
+            </FooterSiteLink>
+          </FooterLi>
+          <FooterLi>
+            <FooterLink href="https://goo.gl/maps/SgyYLnEM7dQ6ghM78">
+              <h4 style={{ fontWeight: `normal` }}>
+                1212 19th Street
+                <br />
+                Galveston, Texas
+              </h4>
             </FooterLink>
-            <FooterLink href="mailto:info@galvestonspeakeasy.com">
-              <FontAwesomeIcon icon={faEnvelope} size="lg" />
-            </FooterLink>
-          </IconLinks>
-        </FooterLi>
-      </ListStyle>
-    </Col>
-    <Col md={2} />
-    <Col md={5} sm={6} xs={12}>
-      <ListStyle>
-        <FooterLi>
-          <FooterSiteLink to="/history">
-            <h4>History</h4>
-          </FooterSiteLink>
-        </FooterLi>
-        <FooterLi>
-          <FooterSiteLink to="/house">
-            <h4>House</h4>
-          </FooterSiteLink>
-        </FooterLi>
-        <FooterLi>
-          <FooterSiteLink to="/testimonials">
-            <h4>Testimonials</h4>
-          </FooterSiteLink>
-        </FooterLi>
-        {/* <FooterLi>
+          </FooterLi>
+          <FooterLi>
+            <FooterSiteLink to="/contact">
+              <h4>Contact Us</h4>
+            </FooterSiteLink>
+          </FooterLi>
+          <FooterLi>
+            <IconLinks>
+              <FooterLink href="https://www.airbnb.com/rooms/39031320">
+                <FontAwesomeIcon icon={faAirbnb} size="lg" />
+              </FooterLink>
+              <FooterLink href="mailto:info@galvestonspeakeasy.com">
+                <FontAwesomeIcon icon={faEnvelope} size="lg" />
+              </FooterLink>
+            </IconLinks>
+          </FooterLi>
+        </ListStyle>
+      </Col>
+      <Col md={6} sm={6} xs={12}>
+        <ListStyle>
+          <FooterLi>
+            <FooterSiteLink to="/history">
+              <h4>History</h4>
+            </FooterSiteLink>
+          </FooterLi>
+          <FooterLi>
+            <FooterSiteLink to="/house">
+              <h4>House</h4>
+            </FooterSiteLink>
+          </FooterLi>
+          <FooterLi>
+            <FooterSiteLink to="/testimonials">
+              <h4>Testimonials</h4>
+            </FooterSiteLink>
+          </FooterLi>
+          {/* <FooterLi>
           <FooterSiteLink to="/media">
             <h4>Media</h4>
           </FooterSiteLink>
         </FooterLi> */}
-        <FooterLi>
-          <FooterSiteLink to="/local-amenities">
-            <h4>Local Amenities</h4>
-          </FooterSiteLink>
-        </FooterLi>
-      </ListStyle>
-    </Col>
-  </FooterDiv>
+          <FooterLi>
+            <FooterSiteLink to="/local-amenities">
+              <h4>Local Amenities</h4>
+            </FooterSiteLink>
+          </FooterLi>
+        </ListStyle>
+      </Col>
+    </FooterDiv>
+  </>
 )
 
 export default Footer

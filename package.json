@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "galveston-speakeasy-cottage-site",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Website for Galveston Speakeasy Cottage, a short-term rental property in Galveston, TX",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Damian Canetti-Rios <damian.canetti.rios@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
@@ -32,7 +32,9 @@
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
-    "react-rainbow-components": "^1.5.0"
+    "react-modal": "^3.11.1",
+    "react-rainbow-components": "^1.5.0",
+    "react-stack-grid": "^0.7.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
@@ -47,13 +49,13 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": ""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/damiancanettirios/galveston-speakeasy"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/damiancanettirios/galveston-speakeasy/issues"
   }
 }
