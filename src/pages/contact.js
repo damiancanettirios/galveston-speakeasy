@@ -41,7 +41,7 @@ const ContactPage = ({ data }) => {
           <form action="https://formspree.io/xzbbvwbz" method="POST">
             <Form.Group controlId="formBasicName">
               <Form.Label>Your Name</Form.Label>
-              <Form.Control type="text" size="lg" />
+              <Form.Control type="text" name="name" size="lg" />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -49,11 +49,12 @@ const ContactPage = ({ data }) => {
                 type="email"
                 size="lg"
                 placeholder="name@example.com"
+                name="_replyto"
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Your Question</Form.Label>
-              <Form.Control as="textarea" size="lg" rows="8" />
+              <Form.Control as="textarea" name="message" size="lg" rows="8" />
             </Form.Group>
             <Button variant="primary" type="submit">
               Submit
