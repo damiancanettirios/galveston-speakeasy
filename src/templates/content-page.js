@@ -30,7 +30,6 @@ const ContentPage = ({ data }) => {
           `galveston speakeasy`,
           `galveston speakeasy cottage`,
         ]}
-      />{" "}
       />
       <BackgroundImage
         Tag="section"

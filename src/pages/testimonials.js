@@ -27,7 +27,6 @@ const TestimonialsPage = ({ data }) => {
           `galveston speakeasy`,
           `galveston speakeasy cottage`,
         ]}
-      />{" "}
       />
       <BackgroundImage Tag="section" fluid={hero.fluid}>
         <Jumbotron

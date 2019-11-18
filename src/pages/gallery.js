@@ -30,7 +30,6 @@ const GalleryPage = ({ data }) => {
           `galveston speakeasy`,
           `galveston speakeasy cottage`,
         ]}
-      />{" "}
       />
       <div style={{ paddingBottom: 60, paddingTop: 60 }}>
         <Container>
