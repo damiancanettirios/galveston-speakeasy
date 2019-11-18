@@ -14,7 +14,21 @@ const ContactPage = ({ data }) => {
   const hero = data.hero
   return (
     <Layout>
-      <SEO title="Contact Us" />
+      <SEO
+        title="Contact Us"
+        keywords={[
+          `Galveston`,
+          `vacation homes`,
+          `galveston vacation homes`,
+          `galveston rentals`,
+          `galveston airbnbs`,
+          `galveston airbnb`,
+          `places to rent in galveston`,
+          `galveston speakeasy`,
+          `galveston speakeasy cottage`,
+        ]}
+      />{" "}
+      />
       <BackgroundImage
         Tag="section"
         fluid={hero.fluid}

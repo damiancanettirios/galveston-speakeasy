@@ -19,7 +19,20 @@ const IndexPage = ({ data }) => {
   const gallery = data.gallery.images
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO
+        title="Home"
+        keywords={[
+          `Galveston`,
+          `vacation homes`,
+          `galveston vacation homes`,
+          `galveston rentals`,
+          `galveston airbnbs`,
+          `galveston airbnb`,
+          `places to rent in galveston`,
+          `galveston speakeasy`,
+          `galveston speakeasy cottage`,
+        ]}
+      />
       <Carousel style={{ margin: `0 auto`, width: `95%` }}>
         {pictures.map(image => (
           <Carousel.Item key={image.id} style={{ objectFit: `contain` }}>

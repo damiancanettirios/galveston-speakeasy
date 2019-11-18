@@ -14,7 +14,21 @@ const TestimonialsPage = ({ data }) => {
   const hero = data.hero
   return (
     <Layout>
-      <SEO title="Testimonials" />
+      <SEO
+        title="Testimonials"
+        keywords={[
+          `Galveston`,
+          `vacation homes`,
+          `galveston vacation homes`,
+          `galveston rentals`,
+          `galveston airbnbs`,
+          `galveston airbnb`,
+          `places to rent in galveston`,
+          `galveston speakeasy`,
+          `galveston speakeasy cottage`,
+        ]}
+      />{" "}
+      />
       <BackgroundImage Tag="section" fluid={hero.fluid}>
         <Jumbotron
           style={{

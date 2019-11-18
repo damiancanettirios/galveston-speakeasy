@@ -17,7 +17,21 @@ const ContentPage = ({ data }) => {
   const body = data.contentfulPages.body
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO
+        title={title}
+        keywords={[
+          `Galveston`,
+          `vacation homes`,
+          `galveston vacation homes`,
+          `galveston rentals`,
+          `galveston airbnbs`,
+          `galveston airbnb`,
+          `places to rent in galveston`,
+          `galveston speakeasy`,
+          `galveston speakeasy cottage`,
+        ]}
+      />{" "}
+      />
       <BackgroundImage
         Tag="section"
         fluid={hero.fluid}

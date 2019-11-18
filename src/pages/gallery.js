@@ -17,7 +17,21 @@ const GalleryPage = ({ data }) => {
   })
   return (
     <Layout>
-      <SEO title="Gallery" />
+      <SEO
+        title="Gallery"
+        keywords={[
+          `Galveston`,
+          `vacation homes`,
+          `galveston vacation homes`,
+          `galveston rentals`,
+          `galveston airbnbs`,
+          `galveston airbnb`,
+          `places to rent in galveston`,
+          `galveston speakeasy`,
+          `galveston speakeasy cottage`,
+        ]}
+      />{" "}
+      />
       <div style={{ paddingBottom: 60, paddingTop: 60 }}>
         <Container>
           <h2 style={{ paddingBottom: 40, textAlign: `center` }}>
