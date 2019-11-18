@@ -38,7 +38,7 @@ const ContactPage = ({ data }) => {
       </BackgroundImage>
       <Container>
         <div style={{ margin: `0 auto`, marginBottom: 70 }}>
-          <form action="https://formspree.io/xzbbvwbz" method="POST">
+          <form action="https://formspree.io/mnqqljvy" method="POST">
             <Form.Group controlId="formBasicName">
               <Form.Label>Your Name</Form.Label>
               <Form.Control type="text" name="name" size="lg" />
