@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 
 import Button from "react-bootstrap/Button"
@@ -33,7 +33,7 @@ const IndexPage = ({ data }) => {
           `galveston speakeasy cottage`,
         ]}
       />
-      <Carousel style={{ margin: `0 auto`, width: `95%` }}>
+      <Carousel style={{ margin: `0 auto` }}>
         {pictures.map(image => (
           <Carousel.Item key={image.id} style={{ objectFit: `contain` }}>
             <Img fluid={image.fluid} alt={image.description} />
@@ -76,14 +76,15 @@ const IndexPage = ({ data }) => {
       {/* Local Amenities */}
       <Container style={{ marginBottom: 60, padding: 0 }}>
         <Galveston>
-          <Container style={{ padding: 50 }}>
-            <h1 style={{ color: `white`, marginBottom: 30 }}>
+          <Container style={{ textAlign: `center` }}>
+            <h2 style={{ color: `white`, marginBottom: 30 }}>
               Check out these places on your next trip to Galveston island
-            </h1>
-
-            <Button variant="info" size="lg">
-              See the Local Amenities
-            </Button>
+            </h2>
+            <Link to="/local-amenities">
+              <Button variant="primary" size="lg">
+                See the Local Amenities
+              </Button>
+            </Link>
           </Container>
         </Galveston>
       </Container>

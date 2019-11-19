@@ -7,8 +7,8 @@ import { css } from "@emotion/core"
 import Button from "react-bootstrap/Button"
 
 const StatSection = styled("div")`
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   width: 95vw;
   margin: 0 auto;
 
@@ -23,9 +23,9 @@ const StatSection = styled("div")`
 const StatBox = styled("div")`
   border-top: 1px solid silver;
   border-bottom: 1px solid silver;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 40px;
   width: 150px;
   display: flex;
   flex-direction: column;
@@ -39,8 +39,8 @@ const Subtitle = styled("h5")`
   font-style: italic;
   width: 95%;
   margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   @media (min-width: 701px) {
     font-weight: 500;
   }
@@ -122,8 +122,8 @@ const HouseStats = ({ stats, gallery }) => (
         style={{
           display: `flex`,
           justifyContent: `center`,
-          paddingBottom: 40,
-          paddingTop: 30,
+          paddingBottom: 60,
+          paddingTop: 40,
         }}
       >
         <Link to="/gallery" style={{ border: `none` }}>
