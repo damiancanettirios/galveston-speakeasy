@@ -43,6 +43,7 @@ module.exports = {
         trackingId: "UA-153086251-1",
       },
     },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
