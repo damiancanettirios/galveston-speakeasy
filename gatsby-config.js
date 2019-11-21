@@ -26,6 +26,7 @@ module.exports = {
     description: `Stay at this historical home during your next visit to Galveston Texas`,
     headline: `Galveston Speakeasy Cottage`,
     address: `1212 19th St, Galveston, TX`,
+    siteUrl: `https://www.galvestonspeakeasy.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
