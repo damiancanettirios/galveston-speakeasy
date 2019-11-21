@@ -77,7 +77,7 @@ export default GalleryPage
 
 export const GalleryQuery = graphql`
   query {
-    pictures: contentfulCasousel(name: { eq: "Main Casousel" }) {
+    pictures: contentfulGallery(name: { eq: "Main" }) {
       name
       images {
         id

@@ -96,7 +96,7 @@ export default IndexPage
 
 export const HomeQuery = graphql`
   {
-    heros: contentfulCasousel(name: { eq: "Hero" }) {
+    heros: contentfulGallery(name: { eq: "Hero" }) {
       name
       images {
         id
@@ -128,7 +128,7 @@ export const HomeQuery = graphql`
         stars
       }
     }
-    gallery: contentfulCasousel(name: { eq: "Main Casousel" }) {
+    gallery: contentfulGallery(name: { eq: "Main" }) {
       name
       images {
         id
