@@ -123,11 +123,11 @@ const Footer = () => (
               <h4>Testimonials</h4>
             </FooterSiteLink>
           </FooterLi>
-          {/* <FooterLi>
-          <FooterSiteLink to="/media">
-            <h4>Media</h4>
-          </FooterSiteLink>
-        </FooterLi> */}
+          <FooterLi>
+            <FooterSiteLink to="/media">
+              <h4>Media</h4>
+            </FooterSiteLink>
+          </FooterLi>
           <FooterLi>
             <FooterSiteLink to="/local-amenities">
               <h4>Local Amenities</h4>

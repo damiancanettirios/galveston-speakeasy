@@ -79,9 +79,9 @@ const Header = ({ siteData }) => {
           <Nav.Link href={`/testimonials`} style={{ paddingLeft: 10 }}>
             Testimonials
           </Nav.Link>
-          {/* <Nav.Link href={`/media`} style={{ paddingLeft: 0 }}>
+          <Nav.Link href={`/media`} style={{ paddingLeft: 10 }}>
             Media
-          </Nav.Link> */}
+          </Nav.Link>
           <Nav.Link href={`/local-amenities`} style={{ paddingLeft: 10 }}>
             Local Amenities
           </Nav.Link>
