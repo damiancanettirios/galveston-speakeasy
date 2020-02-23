@@ -1,10 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
 
-import Jumbotron from "react-bootstrap/Jumbotron"
 import Container from "react-bootstrap/Container"
 
+import HeroJumbotron from "../components/hero-jumbotron"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TestimonialDisplay from "../components/testimonial-display"
@@ -28,23 +27,7 @@ const TestimonialsPage = ({ data }) => {
           `galveston speakeasy cottage`,
         ]}
       />
-      <BackgroundImage Tag="section" fluid={hero.fluid}>
-        <Jumbotron
-          style={{
-            background: `#34495ebb`,
-            paddingTop: 120,
-            paddingBottom: 120,
-          }}
-        >
-          <Container>
-            <h1 style={{ color: `white` }}>
-              Testimonials from
-              <br />
-              Recent Guests
-            </h1>
-          </Container>
-        </Jumbotron>
-      </BackgroundImage>
+      <HeroJumbotron hero={hero} title={"Testimonials from Recent Guests"} />
       <Container style={{ paddingBottom: 40, marginTop: 30, maxWidth: 960 }}>
         {testimonials.map(testimonial => (
           <TestimonialDisplay

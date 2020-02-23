@@ -1,12 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Jumbotron from "react-bootstrap/Jumbotron"
-import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 
+import HeroJumbotron from "../components/hero-jumbotron"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -31,28 +29,16 @@ const ContentPage = ({ data }) => {
           `galveston speakeasy cottage`,
         ]}
       />
-      <BackgroundImage
-        Tag="section"
-        fluid={hero.fluid}
+      <HeroJumbotron hero={hero} title={headline.headline} />
+      <div
         style={{
-          width: `100%`,
-          backgroundPosition: `center center`,
-          backgroundSize: `cover`,
+          maxWidth: `960px`,
+          margin: `0 auto`,
+          marginLeft: 5,
+          marginRight: 5,
+          marginBottom: 40,
         }}
       >
-        <Jumbotron
-          style={{
-            background: `#34495ebb`,
-            paddingTop: 120,
-            paddingBottom: 120,
-          }}
-        >
-          <Container style={{ color: `white` }}>
-            <MDXRenderer>{headline.childMdx.body}</MDXRenderer>
-          </Container>
-        </Jumbotron>
-      </BackgroundImage>
-      <div style={{ maxWidth: `960px`, margin: `0 auto`, marginBottom: 40 }}>
         <MDXRenderer>{body.childMdx.body}</MDXRenderer>
       </div>
       <div
@@ -88,9 +74,7 @@ export const ContentQuery = graphql`
         }
       }
       headline {
-        childMdx {
-          body
-        }
+        headline
       }
       body {
         childMdx {

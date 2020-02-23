@@ -7,13 +7,13 @@ import { css } from "@emotion/core"
 import Button from "react-bootstrap/Button"
 
 const StatSection = styled("div")`
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 20px 40px 20px;
   width: 95vw;
   margin: 0 auto;
 
   @media (min-width: 701px) {
     display: flex;
+    padding: 40px 0px 40px 0px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -23,13 +23,16 @@ const StatSection = styled("div")`
 const StatBox = styled("div")`
   border-top: 1px solid silver;
   border-bottom: 1px solid silver;
-  padding-bottom: 40px;
+  padding: 0px 0px 40px 0px;
   margin: 0 auto;
   margin-top: 40px;
-  width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 701px) {
+    width: 150px;
+  }
 `
 
 const Subtitle = styled("h5")`

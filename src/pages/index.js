@@ -11,12 +11,14 @@ import SEO from "../components/seo"
 import HouseStats from "../components/house-stats"
 import Galveston from "../components/galveston"
 import TestimonialDisplay from "../components/testimonial-display"
+import ArticleDisplay from "../components/article-display"
 
 const IndexPage = ({ data }) => {
   const pictures = data.heros.images
   const stats = data.stats.edges
   const testimonials = data.testimonials.nodes
   const gallery = data.gallery.images
+  const articles = data.articles.nodes
   return (
     <Layout>
       <SEO
@@ -73,8 +75,38 @@ const IndexPage = ({ data }) => {
           Book the Galveston Speakeasy Cottage on Airbnb
         </Button>
       </div>
+      <hr />
+      {/* Articles about Galveston Speakeasy */}
+      <Container
+        style={{
+          margin: `0 auto`,
+          marginBottom: 60,
+          marginTop: 60,
+        }}
+      >
+        <h1 style={{ marginBottom: 30, textAlign: `center` }}>
+          Media articles showcasing this home
+        </h1>
+        <div style={{ paddingBottom: 20, marginTop: 20 }}>
+          {articles.map(article => (
+            <ArticleDisplay key={article.id} article={article} />
+          ))}
+        </div>
+        <div
+          style={{
+            display: `flex`,
+            justifyContent: `center`,
+          }}
+        >
+          <Link to="/media" style={{ border: `none` }}>
+            <Button variant="outline-primary" size="lg">
+              See other articles
+            </Button>
+          </Link>
+        </div>
+      </Container>
       {/* Local Amenities */}
-      <Container style={{ marginBottom: 60, padding: 0 }}>
+      <Container style={{ padding: 0, margin: `0 auto`, marginBottom: 60 }}>
         <Galveston>
           <Container style={{ textAlign: `center` }}>
             <h2 style={{ color: `white`, marginBottom: 30 }}>
@@ -135,6 +167,27 @@ export const HomeQuery = graphql`
         description
         fluid(quality: 100) {
           ...GatsbyContentfulFluid_noBase64
+        }
+      }
+    }
+    articles: allContentfulMedia(
+      limit: 2
+      sort: { fields: createdAt, order: DESC }
+    ) {
+      nodes {
+        id
+        title
+        publication
+        date
+        articleUrl
+        picture {
+          title
+          fluid(quality: 100) {
+            ...GatsbyContentfulFluid_noBase64
+          }
+        }
+        description {
+          description
         }
       }
     }

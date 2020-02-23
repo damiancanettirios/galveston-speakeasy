@@ -2,12 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Container from "react-bootstrap/Container"
-import Jumbotron from "react-bootstrap/Jumbotron"
-import BackgroundImage from "gatsby-background-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ArticleDisplay from "../components/article-display"
+import HeroJumbotron from "../components/hero-jumbotron"
 
 const MediaPage = ({ data }) => {
   const articles = data.articles.nodes
@@ -28,23 +27,10 @@ const MediaPage = ({ data }) => {
           `galveston speakeasy cottage`,
         ]}
       />
-      <BackgroundImage Tag="section" fluid={hero.fluid}>
-        <Jumbotron
-          style={{
-            background: `#34495ebb`,
-            paddingTop: 120,
-            paddingBottom: 120,
-          }}
-        >
-          <Container>
-            <h1 style={{ color: `white` }}>
-              Articles about the
-              <br />
-              Galveston Speakeasy Cottage
-            </h1>
-          </Container>
-        </Jumbotron>
-      </BackgroundImage>
+      <HeroJumbotron
+        hero={hero}
+        title={"Articles about the Galveston Speakeasy Cottage"}
+      />
       <Container style={{ paddingBottom: 40, marginTop: 30 }}>
         {articles.map(article => (
           <ArticleDisplay key={article.id} article={article} />
