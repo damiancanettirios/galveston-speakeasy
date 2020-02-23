@@ -45,7 +45,7 @@ const MediaPage = ({ data }) => {
           </Container>
         </Jumbotron>
       </BackgroundImage>
-      <Container style={{ paddingBottom: 40, marginTop: 30, maxWidth: 960 }}>
+      <Container style={{ paddingBottom: 40, marginTop: 30 }}>
         {articles.map(article => (
           <ArticleDisplay key={article.id} article={article} />
         ))}
@@ -66,6 +66,7 @@ export const MediaQuery = graphql`
         date
         articleUrl
         picture {
+          title
           fluid(quality: 100) {
             ...GatsbyContentfulFluid_noBase64
           }
